@@ -56,4 +56,12 @@ class Utils {
     }
     return 'Good Day';
   }
+
+  static String publishDateAndTime(String? dateTime){
+
+    DateTime tempDate = DateFormat("yyyy-MM-dd").parse(dateTime!);
+    DateFormat.yMMMEd().format(tempDate);
+    // DateTime anotherDate = DateFormat("yMMMMd").parse(tempDate.toString());
+    return DateFormat.yMMMEd().format(tempDate).toString();
+  }
 }

@@ -43,6 +43,7 @@ class NewsComponentWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10,),
+        newsModel?.urlToImage != null ?
         Container(
           height: 100,
           width: 100,
@@ -52,6 +53,13 @@ class NewsComponentWidget extends StatelessWidget {
             image: DecorationImage(
                 image: NetworkImage('${newsModel?.urlToImage}'),
                 fit: BoxFit.fill),
+          ),
+        ): Container(
+          height: 100,
+          width: 100,
+          decoration: const BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
         ),
       ],

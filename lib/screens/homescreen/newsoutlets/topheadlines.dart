@@ -5,7 +5,9 @@ import 'package:newsupdate/config/apiclient.dart';
 import 'package:auto_animated/auto_animated.dart';
 import '../../../model/newsmodel.dart';
 import '../../../utils/colors.dart';
+import '../../../utils/detailcomponent.dart';
 import '../../../utils/newscomponent.dart';
+import '../../../utils/textstyles.dart';
 import '../../../utils/utils.dart';
 import 'home_screen_store.dart';
 
@@ -87,6 +89,82 @@ class _TopHeadLinesPageState extends State<TopHeadLinesPage> {
               itemBuilder: Utils.animationItemBuilder(
                 ((index) => GestureDetector(
                   onTap: () async {
+                    showModalBottomSheet(context: context,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        builder: (context){
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
+                        child: SizedBox(
+                          height: 450,
+                          child: ListView(
+                              children: [
+                                Text('${newsList[index].title}',
+                                  softWrap: true,
+                                  textAlign: TextAlign.center,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: newsTitle,
+                                ),
+                                const SizedBox(height: 10,),
+                                newsList[index].urlToImage != null ?
+                                Container(
+                                  height: 200,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                    image: DecorationImage(
+                                        image: NetworkImage('${newsList[index].urlToImage}'),
+                                        fit: BoxFit.fill),
+                                  ),
+                                ): Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Container(
+                                  height: 120,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300.withOpacity(0.5),
+                                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        decoration: const BoxDecoration(
+                                          color: black800,
+                                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                                        ),
+                                        width: 10,
+                                        margin: const EdgeInsets.all(5),
+                                      ),
+                                      Flexible(child: Text('${newsList[index].description}', style: publishDate,))
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    const Icon(Icons.arrow_drop_down_sharp, color: Colors.red,),
+                                    DetailComponent(sourcename: newsList[index].source?.name, publishdate: Utils.publishDateAndTime(newsList[index].publishedAt),),
+                                  ],
+                                ),
+                                const SizedBox(height: 10,),
+                                Text('${newsList[index].content}',
+                                  textAlign: TextAlign.left,
+                                  style: newsContent,
+                                )
+                              ]
+                          ),
+                        ),
+                      );
+                    });
                   },
                   child: NewsComponentWidget(newsModel: newsList[index],),
                 )

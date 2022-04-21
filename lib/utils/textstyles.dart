@@ -5,3 +5,5 @@ const welcomeMessage = TextStyle(color: Colors.black, fontSize: 20, fontFamily: 
 const dateMessage = TextStyle(color: Colors.grey, fontSize: 14, fontFamily: 'PTSerifRegular');
 const newsTitle = TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'PTSerifBold');
 const newsAuthor = TextStyle(color: Colors.grey, fontSize: 14, fontFamily: 'PTSerifRegular');
+const publishDate = TextStyle(color: Colors.black, fontSize: 14, fontFamily: 'PTSerifBold');
+const newsContent = TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'PTSerifRegular');
