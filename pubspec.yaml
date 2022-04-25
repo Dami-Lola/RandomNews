@@ -38,7 +38,6 @@ dependencies:
   json_serializable: ^6.1.6
   flutter_mobx: ^2.0.4
   mobx: ^2.0.6+1
-  flutter_secure_storage: ^5.0.2
   dio: ^4.0.6
   validators: ^3.0.0
   auto_animated: ^3.0.1
@@ -50,7 +49,6 @@ dependencies:
   flutter_svg: ^1.0.3
   mockito: ^5.1.0
   shared_preferences: ^2.0.13
-  flutter_inappwebview: ^5.4.0+2
   flutter_datetime_picker: ^1.5.1
   intl: ^0.17.0
 
@@ -114,6 +112,26 @@ flutter:
     - family: PTSerifRegular
       fonts:
         - asset: fonts/PTSerif-Regular.ttf
+
+    - family: Laila-Bold
+      fonts:
+        - asset: fonts/Laila-Bold.ttf
+
+    - family: Laila-Light
+      fonts:
+        - asset: fonts/Laila-Light.ttf
+
+    - family: Laila-Medium
+      fonts:
+        - asset: fonts/Laila-Medium.ttf
+
+    - family: Laila-Regular
+      fonts:
+        - asset: fonts/Laila-Regular.ttf
+
+    - family: Laila-SemiBold
+      fonts:
+        - asset: fonts/Laila-SemiBold.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

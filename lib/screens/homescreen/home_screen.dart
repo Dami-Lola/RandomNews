@@ -6,10 +6,15 @@ import '../../config/apiclient.dart';
 import '../../utils/colors.dart';
 import '../../utils/textstyles.dart';
 import '../../utils/utils.dart';
+import 'newsoutlets/businessnews.dart';
 import 'newsoutlets/home_screen_store.dart';
+import 'newsoutlets/techcrunchnews.dart';
 import 'newsoutlets/topheadlines.dart';
+import 'newsoutlets/wallstreetjournalnews.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/HomeScreen';
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -36,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   SvgPicture.asset(
-                    'assets/images/user-svgrepo-com.svg',
+                    'assets/images/account-avatar-profile-user-8-svgrepo-com.svg',
                     height: 40,
                     width: 40,
                   ),
@@ -60,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: dateMessage,
                   ),
                   Text(
-                    '${Utils.greetingMessage()} User',
+                    '${Utils.greetingMessage()} Jimmy',
                     style: welcomeMessage,
                   ),
                 ],
@@ -218,6 +223,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
               _value == 0
                   ? Expanded(child: TopHeadLinesPage(api: api,))
+                  : Container(),
+              _value == 1
+                  ? Expanded(child: BusinessNewsPage(api: api,))
+                  : Container(),
+              _value == 2
+                  ? Expanded(child: TechCrunchNewsPage(api: api,))
+                  : Container(),
+              _value == 3
+                  ? Expanded(child: WallStreetJournalNewsPage(api: api,))
                   : Container(),
             ],
           ),

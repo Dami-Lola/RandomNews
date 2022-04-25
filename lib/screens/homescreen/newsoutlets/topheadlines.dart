@@ -5,7 +5,7 @@ import 'package:newsupdate/config/apiclient.dart';
 import 'package:auto_animated/auto_animated.dart';
 import '../../../model/newsmodel.dart';
 import '../../../utils/colors.dart';
-import '../../../utils/detailcomponent.dart';
+import '../../../utils/newsdetailcomponent.dart';
 import '../../../utils/newscomponent.dart';
 import '../../../utils/textstyles.dart';
 import '../../../utils/utils.dart';
@@ -152,14 +152,18 @@ class _TopHeadLinesPageState extends State<TopHeadLinesPage> {
                                 Row(
                                   children: [
                                     const Icon(Icons.arrow_drop_down_sharp, color: Colors.red,),
-                                    DetailComponent(sourcename: newsList[index].source?.name, publishdate: Utils.publishDateAndTime(newsList[index].publishedAt),),
+                                    NewsDetailComponent(sourcename: newsList[index].source?.name, publishdate: Utils.publishDateAndTime(newsList[index].publishedAt),),
                                   ],
                                 ),
                                 const SizedBox(height: 10,),
+                                newsList[index].content != null?
                                 Text('${newsList[index].content}',
                                   textAlign: TextAlign.left,
                                   style: newsContent,
-                                )
+                                ):
+                                Text('${newsList[index].description}',
+                                    textAlign: TextAlign.left,
+                                    style: newsContent,)
                               ]
                           ),
                         ),

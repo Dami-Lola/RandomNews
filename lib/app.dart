@@ -15,8 +15,6 @@ class _NewsAppState extends State<NewsApp> {
 
   @override
   void dispose() {
-    // authStore!.dispose();
-    // authTempStore!.dispose();
     super.dispose();
   }
 
@@ -25,7 +23,7 @@ class _NewsAppState extends State<NewsApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Eden',
-      initialRoute: '/BottomNavigator',
+      initialRoute: '/SplashScreen',
       onGenerateRoute: Routers.generateRoute,
       theme: ThemeData(
         primaryColor: redPrimaryColor,
