@@ -7,24 +7,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:newsupdate/main.dart';
+import 'package:newsupdate/screens/profilescreen/addnews.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+  testWidgets('Create a news outlet',(WidgetTester tester) async{
+    final addNewsTitle = find.byKey(const ValueKey('addNewsTitle'));
+    final addShortDescription = find.byKey(const ValueKey('addShortDescription'));
+    final addNewsContent = find.byKey(const ValueKey('addNewsContent'));
+    final addButton = find.byKey(const ValueKey('addButton'));
+    
+    await tester.pumpWidget(const MaterialApp(home: AddNewsPage()));
+    await tester.enterText(addNewsTitle, 'Test news title');
+    await tester.enterText(addShortDescription, 'Test short description');
+    await tester.enterText(addNewsContent, 'Test news content');
+    await tester.tap(addButton);
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+
+    expect(find.text('Test news title'), findsOneWidget);
+    expect(find.text('Test short description'), findsOneWidget);
+    expect(find.text('Test news content'), findsOneWidget);
+    // tester.enterText(finder, text)
   });
 }

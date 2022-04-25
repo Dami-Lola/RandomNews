@@ -75,6 +75,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
                       child: Observer(
                         builder: (_) =>
                             InputField(
+                              key: const Key('addNewsTitle'),
                               maxLines: 3,
                               minLines: 2,
                               onChanged: (v) {
@@ -113,6 +114,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
                       child: Observer(
                         builder: (_) =>
                             InputField(
+                              key: const Key('addShortDescription'),
                               minLines: 4,
                               maxLines: 5,
                               onChanged: (v) {
@@ -150,6 +152,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
                       padding: const EdgeInsets.only(left: 8,right: 8),
                       child: Observer(
                         builder: (_) => InputField(
+                          key: const Key('addNewsContent'),
                           maxLines: 7,
                           minLines: 5,
                           onChanged: (v) {
@@ -165,14 +168,15 @@ class _AddNewsPageState extends State<AddNewsPage> {
               ),
             ),
             ElevatedButton(
+              key: const Key('addButton'),
               onPressed: () {
                 store.submit(context);
               },
-              child: Text('Submit'),
+              child: const Text('Submit'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.red,
                 elevation: 4,
-                padding: EdgeInsets.only(left: 50,right: 50, top: 8, bottom: 8)
+                padding: const EdgeInsets.only(left: 50,right: 50, top: 8, bottom: 8)
               ),
             ),
           ],
